@@ -12,11 +12,19 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // Función para validar el formulario
     function validar(e) {
-        if(e.target.value === ''){
-            console.log('Esta vacío')
+        if(e.target.value.trim() === ''){
+            mostrarAlerta();
         }else{
-            console.log('No esta vacío')
+            console.log('No esta vacío');
         }
+    }
+
+    function mostrarAlerta() {
+        // Generar alerta en HTML
+        const error = document.createElement('P');
+        error.textContent = 'Hubo un error...';
+
+        console.log(error);
     }
 
 });
