@@ -12,7 +12,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // Función para validar el formulario
     function validar(e) {
-        console.log(e.target.value);
+        if(e.target.value === ''){
+            console.log('Esta vacío')
+        }else{
+            console.log('No esta vacío')
+        }
     }
 
 });
