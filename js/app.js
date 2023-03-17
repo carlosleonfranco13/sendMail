@@ -5,5 +5,14 @@ document.addEventListener('DOMContentLoaded', function(){
     const inputAsunto = document.querySelector('#asunto');
     const inputMensaje = document.querySelector('#mensaje');
 
-    console.log(inputMensaje)
+    // Asignar eventos
+    inputEmail.addEventListener('blur', validar);
+    inputAsunto.addEventListener('blur', validar);
+    inputMensaje.addEventListener('blur', validar);
+
+    // Función para validar el formulario
+    function validar(e) {
+        console.log(e.target.value);
+    }
+
 });
