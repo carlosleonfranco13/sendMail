@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const email = {
     email: "",
+    cc: "",
     asunto: "",
     mensaje: "",
   };
@@ -9,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Seleccionar los elementos de la interfaz
   const inputEmail = document.querySelector("#email");
+  const inputCC = document.querySelector("#cc");
   const inputAsunto = document.querySelector("#asunto");
   const inputMensaje = document.querySelector("#mensaje");
   const formulario = document.querySelector("#formulario");
@@ -18,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Asignar eventos
   inputEmail.addEventListener("input", validar);
+  inputCC.addEventListener("input", validarCC);
   inputAsunto.addEventListener("input", validar);
   inputMensaje.addEventListener("input", validar);
 
@@ -66,10 +69,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Función para validar el formulario
   function validar(e) {
     if (e.target.value.trim() === "") {
-      mostrarAlerta(
-        `El campo ${e.target.id} es obligatorio`,
-        e.target.parentElement
-      );
+      mostrarAlerta(`El campo ${e.target.id} es obligatorio`,e.target.parentElement);
+      console.log(e.target.parentElement);
       email[e.target.name] = "";
       comprobarEmail();
       return;
@@ -85,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     limpiarAlerta(e.target.parentElement);
 
     // Asignar los valores
-    email[e.target.name] = e.target.value.trim().toLowerCase();
+    email[e.target.name] = e.target.value.trim().toLowerCase(); 
 
     // Comprobar el objeto de email
     comprobarEmail();
@@ -115,6 +116,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const regex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
     const resultado = regex.test(email);
     return resultado;
+  }
+
+  function validarCC(cc) {
+    const regex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    const resultadoCC = regex.test(cc);
+    return resultadoCC;
   }
 
   function comprobarEmail() {
