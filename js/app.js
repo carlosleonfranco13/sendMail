@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Asignar eventos
   inputEmail.addEventListener("input", validar);
-  inputCC.addEventListener("input", validarCC);
+  inputCC.addEventListener("input", validar);
   inputAsunto.addEventListener("input", validar);
   inputMensaje.addEventListener("input", validar);
 
@@ -83,6 +83,13 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    if (e.target.id === "cc" && !validarCC(e.target.value)) {
+      mostrarAlerta("El email no es válido", e.target.parentElement);
+      cc[e.target.name] = "";
+      comprobarEmail();
+      return;
+    }
+
     limpiarAlerta(e.target.parentElement);
 
     // Asignar los valores
@@ -137,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function resetFormulario() {
     // Reiniciar el objeto
     email.email = "";
+    email.cc = "";
     email.asunto = "";
     email.mensaje = "";
 
